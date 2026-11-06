@@ -3,7 +3,6 @@ on: workflow_dispatch
 
 permissions:
   contents: read
-  issues: write
 
 jobs:
   zap_scan:
@@ -13,3 +12,11 @@ jobs:
         uses: zaproxy/action-full-scan@v0.10.0
         with:
           target: 'https://ufuqbot.com'
+          cmd_options: '-a'
+
+      - name: Upload report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: zap-report
+          path: report_html.html
