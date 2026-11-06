@@ -1,0 +1,10 @@
+name: ZAP Full Scan
+on: workflow_dispatch
+jobs:
+  zap_scan:
+    runs-on: ubuntu-latest
+    steps:
+      - name: ZAP Full Scan
+        uses: zaproxy/action-full-scan@v0.10.0
+        with:
+          target: 'https://ufuqbot.com'
